@@ -4,7 +4,7 @@ Nov 02 04:12:09 server sshd[1027]: Failed password for root from 192.168.1.50 po
 Nov 02 04:12:14 server sshd[1030]: Failed password for admin from 192.168.1.50 port 43216 ssh2
 Nov 02 04:12:18 server sshd[1033]: Failed password for ubuntu from 192.168.1.50 port 43218 ssh2
 Nov 02 04:12:22 server sshd[1036]: Failed password for testuser from 192.168.1.50 port 43220 ssh2
-Nov 02 04:14:02 server sshd[1050]: Failed password for chanchlesh from 10.0.0.12 port 51102 ssh2
-Nov 02 04:15:30 server sshd[1062]: Accepted publickey for chanchlesh from 10.0.0.12 port 51110 ssh2
+Nov 02 04:14:02 server sshd[1050]: Failed password for mainuser from 10.0.0.12 port 51102 ssh2
+Nov 02 04:15:30 server sshd[1062]: Accepted publickey for mainuser from 10.0.0.12 port 51110 ssh2
 Nov 02 04:18:11 server sshd[1071]: Failed password for git from 203.0.113.88 port 39821 ssh2
 Nov 02 04:18:14 server sshd[1074]: Failed password for git from 203.0.113.88 port 39824 ssh2
