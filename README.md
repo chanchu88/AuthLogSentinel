@@ -27,35 +27,82 @@ This project was built to fulfill Task 13: Build a Small Defensive Security Tool
 
 ## Getting Started
 
-### Prerequisites
+## Prerequisites
 
 - Python 3.8 or higher installed.
+- Git installed (for cloning the repository).
 
-### Installation
+## Installation
 
 1. Clone this repository:
-   `bash
-   git clone [https://github.com/](https://github.com/)chanchu88/AuthLogSentinel.git
+
+   ```bash
+   git clone https://github.com/chanchu88/AuthLogSentinel.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
    cd AuthLogSentinel
+   ```
 
-2. No third-party packages are required.
+3. No third-party Python packages are required.
 
-### Usage
-Run the script by passing the path to the target log file:
+## Usage
 
-`python3 log_sentinel.py <path_to_log_file> [-t THRESHOLD]
+Run the script by passing the path to the target authentication log file:
 
-Options:
-<log_file>: Path to the log file (e.g., test_auth.log or /var/log/auth.log).
--t, --threshold: Minimum number of failed attempts to trigger a brute-force alert (Default: 5).
-Example Command: python3 log_sentinel.py test_auth.log -t 5
+```bash
+python3 log_sentinel.py <path_to_log_file> [-t THRESHOLD]
+```
 
-Verification & Test Results
-Test Input (test_auth.log highlights)
-The synthetic dataset includes:
-IP 192.168.1.50: 6 consecutive failed password attempts targeting root, admin, ubuntu, and testuser.
-IP 10.0.0.12: 1 failed password attempt, followed by a valid publickey login for user chanchlesh.
-IP 203.0.113.88: 2 failed attempts for user git.
-Output Sample:
+### Command-Line Options
+
+| Option | Description | Default |
+|---|---|---|
+| `log_file` | Path to the authentication log file | Required |
+| `-t`, `--threshold` | Minimum failed login attempts required to trigger a brute-force alert | `5` |
+
+### Example
+
+```bash
+python3 log_sentinel.py test_auth.log -t 5
+```
+
+## Verification & Test Results
+
+The tool was tested using a synthetic authentication log dataset (`test_auth.log`).
+
+### Test Dataset Highlights
+
+**1. Suspicious Source – `192.168.1.50`**
+- 6 consecutive failed password attempts.
+- Targeted usernames: `root`, `admin`, `ubuntu`, and `testuser`.
+- Expected detection: Potential brute-force activity.
+
+**2. Successful Authentication – `10.0.0.12`**
+- 1 failed password attempt.
+- Followed by a successful public key login for user `chanchlesh`.
+- Expected detection: Successful login activity.
+
+**3. Failed Authentication – `203.0.113.88`**
+- 2 failed login attempts targeting user `git`.
+- Expected detection: Below the default brute-force threshold.
+
+### Output Sample
+
+Run the command below to generate the audit report:
+
+```bash
+python3 log_sentinel.py test_auth.log -t 5
+```
 
 ![result](assets/result.png)
+
+
+The report identifies suspicious IP addresses, potential brute-force attempts, root login probes, and successful logins.
+
+## Project Repository
+
+[AuthLogSentinel – GitHub](https://github.com/chanchu88/AuthLogSentinel.git)
+
